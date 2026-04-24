@@ -1,0 +1,118 @@
+@import "@/styles/variables";
+
+.footer {
+  background-color: #111827; // Твой глубокий черный/серый
+  color: $white;
+  padding: 80px 0 30px;
+  margin-top: auto; // Прижимает к низу, если контента мало
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1.2fr 1fr;
+    gap: 40px;
+    margin-bottom: 60px;
+
+    @include tablet {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @include mobile {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+.description {
+  margin-top: 20px;
+  color: $gray-200;
+  line-height: 1.6;
+  font-size: 0.95rem;
+  max-width: 300px;
+}
+
+h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 25px;
+  color: $primary-green; // Тот самый акцентный зеленый
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  a {
+    color: $gray-200;
+    text-decoration: none;
+    transition: $transition;
+
+    &:hover {
+      color: $primary-green;
+      padding-left: 5px; // Небольшой эффект при наведении
+    }
+  }
+}
+
+.contacts {
+  .item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+    color: $gray-200;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      &:hover {
+        color: $primary-green;
+      }
+    }
+  }
+}
+
+.icons {
+  display: flex;
+  gap: 15px;
+
+  .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    color: $white;
+    transition: $transition;
+
+    &:hover {
+      background: $primary-green;
+      transform: translateY(-3px);
+    }
+  }
+}
+
+.bottom {
+  padding-top: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: $gray-200;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  @include mobile {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+}

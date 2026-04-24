@@ -1,0 +1,30 @@
+@import "../../../styles/variables";
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: rgba($white, 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid $gray-100;
+  padding: 15px 0;
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+
+  nav {
+    @include tablet {
+      display: none;
+    }
+
+    ul {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+  }
+}

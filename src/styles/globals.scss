@@ -1,0 +1,80 @@
+@import "./variables";
+
+// Базовый сброс и нормализация
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body {
+  height: 100%;
+  // Плавный скролл для якорных ссылок
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  color: $text-main;
+  background: $white;
+  line-height: 1.5;
+  overflow-x: hidden; // Защита от горизонтального скролла из-за анимаций
+}
+
+// Убираем дефолтные стили списков (поможет твоей Navigation)
+ul,
+ol {
+  list-style: none;
+}
+
+// Сброс для ссылок
+a {
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+  transition: $transition;
+}
+
+// Сброс для кнопок (чтобы не писать это в каждом компоненте)
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+  outline: none;
+}
+
+// Изображения
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+// Глобальный контейнер
+.container {
+  max-width: $container-width;
+  margin: 0 auto;
+  padding: 0 20px;
+
+  @include mobile {
+    padding: 0 16px;
+  }
+}
+
+// Утилитарный класс для скрытия заголовков (SEO)
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
