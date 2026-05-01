@@ -5,6 +5,7 @@ import { ButtonSliderNav } from "../UI-kit/ButtonSliderNav/ButtonSliderNav";
 import { AnimatePresence, motion } from "framer-motion";
 import { heroAnimation } from "@/config/heroAnimation";
 import Image from "next/image"
+import Link from "next/link";
 
 export const Hero = () => {
     const [[page, direction], setPage] = useState([0, 0]);
@@ -25,10 +26,17 @@ export const Hero = () => {
         return () => clearInterval(slideShow);
     }, [paginate, isPaused]);
 
+    // const handleScrollToQuiz = () => { - скорее всего переизбыточно
+    //     const scrollToQuiz = document.querySelector(".quiz")
+    //     if (scrollToQuiz) {
+    //         scrollToQuiz.scrollIntoView({behavior: 'smooth'});
+    //     }
+    // }
+
     const slide = heroAnimation[activeIndex];
 
     return (
-        <section className={styles.hero} id="services" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
+        <section className={styles.hero} id="main" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
             <Image
                 src="/HomeBG.jpg"
                 alt=""
@@ -52,27 +60,26 @@ export const Hero = () => {
                             <div className={styles.heroInfo}>
                                 <span className={styles.heroPreTitle}>ПРОФЕССИОНАЛЬНО И БЕЗОПАСНО</span>
                                 <h1 className={styles.heroTitle}>{slide.title}</h1>
-                                
+
                                 <p className={styles.heroDescription}>
-                                    Избавим ваш дом, офис или предприятие от насекомых, грибка, плесени и бактерий. 
+                                    Избавим ваш дом, офис или предприятие от насекомых, грибка, плесени и бактерий.
                                     Гарантируем безопасность для людей и животных.
-                                    {/* не придумал, что написать */}
                                 </p>
 
                                 <div className={styles.heroActions}>
-                                    <button className={styles.btnPrimary}>Рассчитать стоимость</button>
-                                    <button className={styles.btnSecondary}>Наши услуги</button>
+                                    <Link className={styles.btnPrimary} href={"#quiz"}>Рассчитать стоимость</Link>
+                                    <Link className={styles.btnSecondary} href={"#services"}>Наши услуги</Link>
                                 </div>
                             </div>
 
                             <div className={styles.heroVisual}>
                                 <div className={styles.heroImage}>
-                                    <Image 
-                                        src={slide.image} 
-                                        alt={slide.master} 
-                                        fill 
-                                        priority 
-                                        className={styles.masterImg} 
+                                    <Image
+                                        src={slide.image}
+                                        alt={slide.master}
+                                        fill
+                                        priority
+                                        className={styles.masterImg}
                                     />
                                     <div className={styles.heroNavigation}>
                                         <ButtonSliderNav onPrev={() => paginate(-1)} onNext={() => paginate(1)} />

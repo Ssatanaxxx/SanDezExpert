@@ -1,0 +1,15 @@
+@import "../../../styles/variables";
+
+.logotype {
+  transition: opacity 0.2s ease;
+  cursor: pointer;
+  height: auto;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  @include mobile {
+    width: 130px;
+  }
+}

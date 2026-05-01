@@ -1,7 +1,7 @@
-import { Logotype } from "../../UI-kit/Logotype/Logotype";
 import { Navigation } from "../../UI-kit/Navigation/Navigation";
 import { Phone, Mail, MapPin, MessageCircle } from "lucide-react";
 import styles from "./Footer.module.scss";
+import { FooterLogoType } from "@/components/UI-kit/FooterLogoType/FooterLogoType";
 
 export const Footer = () => {
     const currentYear = new Date().getFullYear();
@@ -10,9 +10,8 @@ export const Footer = () => {
         <footer className={styles.footer}>
             <div className="container">
                 <div className={styles.inner}>
-                    {/* Блок 1: Лого и описание */}
                     <div className={styles.brand}>
-                        <Logotype />
+                        <FooterLogoType />
                         <p className={styles.brandText}>
                             Профессиональная дезинсекция в Астане.
                             Используем передовые технологии для защиты вашего дома и бизнеса.

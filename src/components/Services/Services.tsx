@@ -4,6 +4,7 @@ import styles from "./Services.module.scss";
 import { servicesData } from "../../config/services";
 import { motion, AnimatePresence } from "framer-motion";
 import { clsx } from "clsx";
+import Link from "next/link";
 
 export const Services = () => {
     const [activeId, setActiveId] = useState<string | null>(servicesData[0].id);
@@ -57,7 +58,7 @@ export const Services = () => {
 
                                                     <div className={styles.cardFooter}>
                                                         <span className={styles.price}>от {service.price.toLocaleString()} ₸</span>
-                                                        <button className={styles.orderBtn}>Заказать услугу</button>
+                                                        <Link className={styles.orderBtn} href={"#quiz"}>Заказать услугу</Link>
                                                     </div>
                                                 </motion.div>
                                             )}
