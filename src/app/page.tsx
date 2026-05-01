@@ -1,6 +1,7 @@
 import { AboutUs } from "@/components/AboutUs/AboutUs";
 import { Certificates } from "@/components/Certificates/Certificates";
 import { Hero } from "@/components/Hero/Hero";
+import { InfoSection } from "@/components/InfoSection/InfoSection";
 import { Quiz } from "@/components/Quiz/Quiz";
 import { Reviews } from "@/components/Reviews/Reviews";
 import { Services } from "@/components/Services/Services";
@@ -11,6 +12,7 @@ export default function Home() {
       <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
         <Hero />
         <Services />
+        <InfoSection />
         <AboutUs />
         <Quiz />
         <Certificates />
