@@ -1,21 +1,27 @@
 @import "../../styles/variables";
 
 .hero {
-  padding: 80px 0;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 40px 0;
+  min-height: 700px;
   background-color: $bg-light;
   overflow: hidden;
-  position: relative;
+}
+
+.backgroundImage {
+  object-fit: contain;
+  object-position: center bottom;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.6;
 }
 
 .heroContainer {
   position: relative;
-  min-height: 550px;
-  display: flex;
-  align-items: center;
-
-  @include tablet {
-    min-height: 700px;
-  }
+  z-index: 2;
+  width: 100%;
 }
 
 .heroSliderGrid {
@@ -25,19 +31,14 @@
   gap: 60px;
   align-items: center;
 
-  position: absolute;
-  left: 0;
-  top: 0;
-
   @include tablet {
     grid-template-columns: 1fr;
     gap: 40px;
     text-align: center;
-    position: relative;
   }
 }
 
-// ЛЕВАЯ ЧАСТЬ (Текст)
+// ЛЕВАЯ ЧАСТЬ
 .heroInfo {
   display: flex;
   flex-direction: column;
@@ -56,34 +57,31 @@
   letter-spacing: -0.02em;
 
   span {
-    color: $primary-green;
+    color: $brand-blue;
   }
 
   @include laptop {
     font-size: 3rem;
   }
-
   @include tablet {
     font-size: 2.5rem;
   }
-
   @include mobile {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
 }
 
 .heroQuoteBlock {
-  border-left: 4px solid $primary-green;
-  padding-left: 25px;
-  background-color: $white;
-  padding: 20px 25px;
+  border-left: 4px solid $brand-blue;
+  background-color: rgba($white, 0.8);
+  backdrop-filter: blur(5px);
+  padding: 25px;
   border-radius: $border-radius-sm;
-  box-shadow: $shadow-sm;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 
   @include tablet {
     border-left: none;
-    border-top: 4px solid $primary-green;
-    padding-top: 25px;
+    border-top: 4px solid $brand-blue;
   }
 }
 
@@ -92,46 +90,42 @@
   font-style: italic;
   color: $text-muted;
   line-height: 1.6;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .heroQuoteName {
   font-weight: 600;
   color: $text-main;
-  font-size: 0.95rem;
+  font-size: 1rem;
+  display: block;
 }
 
 .heroQuoteFooter {
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: 25px;
   margin-top: 10px;
 
   @include mobile {
     flex-direction: column;
-    gap: 15px;
     width: 100%;
   }
 }
 
 .heroQuoteFooterBtn {
-  background-color: $primary-green;
+  background-color: $brand-blue;
   color: $white;
-  padding: 18px 35px;
-  border-radius: $border-radius;
+  padding: 20px 40px;
+  border-radius: 12px;
   font-weight: 700;
   font-size: 1.1rem;
-  transition: $transition;
-  box-shadow: 0 4px 14px rgba($primary-green, 0.25);
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba($brand-blue, 0.2);
 
   &:hover {
-    background-color: $hover-green;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba($primary-green, 0.35);
-  }
-
-  &:active {
-    transform: translateY(0);
+    background-color: $brand-blue-hover;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba($brand-blue, 0.3);
   }
 
   @include mobile {
@@ -146,68 +140,236 @@
 
 .heroQuoteFooterPrice {
   font-weight: 800;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   color: $text-main;
-  margin-left: 5px;
 }
 
-// ПРАВАЯ ЧАСТЬ (Визуал)
+// ПРАВАЯ ЧАСТЬ
 .heroVisual {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
+  position: relative;
+  z-index: 2;
+
+  @include tablet {
+    justify-content: center;
+    margin-top: 40px;
+  }
+}
+
+.heroImage {
+  width: 100%;
+  max-width: 480px;
+  height: 580px;
+  position: relative;
+
+  border-radius: 40px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  img {
+    object-fit: cover;
+    object-position: top center;
+    transition: transform 0.5s ease;
+  }
+
+  &:hover img {
+    transform: scale(1.05);
+  }
+
+  @include laptop {
+    height: 500px;
+  }
+
+  @include tablet {
+    height: 450px;
+    max-width: 400px;
+  }
+
+  @include mobile {
+    height: 380px;
+    border-radius: 24px;
+  }
+}
+
+.heroImage {
+  width: 100%;
+  max-width: 480px;
+  height: 580px;
+  position: relative;
+
+  border-radius: 40px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+  background-color: #001a4d;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  @include tablet {
+    height: 480px;
+    max-width: 100%;
+  }
+}
+
+.skeleton {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $text-muted;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.heroNavigationWrapp {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 10;
+
+  @include tablet {
+    position: absolute;
+    bottom: -60px;
+    right: 50%;
+    transform: translateX(50%);
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.heroPreTitle {
+  color: #0066FF;
+  font-weight: 700;
+  font-size: 1.9rem;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  margin-bottom: -10px;
+  display: inline-block;
+
+  background: linear-gradient(
+    to right, 
+    #0066FF 0%, 
+    #0066FF 40%, 
+    #ffffff 50%,
+    #0066FF 60%, 
+    #0066FF 100%
+  );
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  animation: shine 8s linear infinite;
+}
+
+@keyframes shine {
+  0% {
+    background-position: 100% center;
+  }
+  20% {
+    background-position: -60% center;
+  }
+  100% {
+    background-position: -70% center;
+  }
+}
+
+.heroTitle {
+  font-size: 3.8rem;
+  font-weight: 800;
+  color: #1a2b4b;
+  line-height: 1.1;
+  max-width: 600px;
+}
+
+.heroDescription {
+  font-size: 1.2rem;
+  color: $text-muted;
+  line-height: 1.6;
+  max-width: 500px;
+}
+
+.heroActions {
+  display: flex;
+  gap: 16px;
+  margin-top: 10px;
+
+  @include mobile {
+    flex-direction: column;
+  }
+}
+
+.btnPrimary {
+  background: $brand-blue;
+  color: white;
+  padding: 18px 32px;
+  border-radius: 12px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+  &:hover {
+    background: $brand-blue-hover;
+    transform: translateY(-2px);
+  }
+}
+
+.btnSecondary {
+  background: white;
+  color: #1a2b4b;
+  padding: 18px 32px;
+  border-radius: 12px;
+  font-weight: 700;
+  border: 1px solid $gray-200;
+  cursor: pointer;
+  transition: 0.3s;
+  &:hover {
+    background: $gray-100;
+  }
+}
+
+.heroVisual {
+  display: flex;
+  justify-content: flex-end;
   position: relative;
 }
 
 .heroImage {
   width: 100%;
-  height: 500px;
+  max-width: 450px;
+  height: 550px;
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
 
   img {
-    object-fit: contain;
-    object-position: center;
-    filter: drop-shadow(0 10px 30px rgba($primary-green, 0.15));
-  }
-
-  @include tablet {
-    height: 350px;
-  }
-
-  @include mobile {
-    height: 280px;
+    object-fit: cover;
   }
 }
 
-// Скелетон, пока нет фото
-.skeleton {
-  width: 100%;
-  height: 100%;
-  background-color: $gray-100;
-  border-radius: $border-radius;
-  border: 2px dashed $gray-200;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: $text-muted;
-  font-style: italic;
-  font-size: 0.9rem;
-}
-
-.heroNavigationWrapp {
+.heroNavigation {
   position: absolute;
-  bottom: 0;
-  right: 0;
-  z-index: 10;
-
-  @include tablet {
-    position: relative;
-    margin-top: 40px;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-  }
+  bottom: 30px;
+  left: 30px;
+  z-index: 5;
 }

@@ -28,55 +28,59 @@ export const Hero = () => {
     const slide = heroAnimation[activeIndex];
 
     return (
-        <section
-            className={styles.hero}
-            aria-roledescription="carousel"
-            onMouseEnter={() => setIsPaused(true)}
-            onMouseLeave={() => setIsPaused(false)}
-        >
+        <section className={styles.hero} id="services" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
+            <Image
+                src="/HomeBG.jpg"
+                alt=""
+                fill
+                priority
+                quality={100}
+                className={styles.backgroundImage}
+            />
             <div className="container">
-                <div className={styles.heroContainer} aria-live="polite">
+                <div className={styles.heroContainer}>
                     <AnimatePresence mode="wait" custom={direction}>
                         <motion.div
                             key={page}
                             custom={direction}
-                            initial={{ opacity: 0, x: direction > 0 ? 50 : -50 }}
+                            initial={{ opacity: 0, x: direction > 0 ? 30 : -30 }}
                             animate={{ opacity: 1, x: 0 }}
-                            exit={{ opacity: 0, x: direction < 0 ? 50 : -50 }}
-                            transition={{ duration: 0.4, ease: "easeInOut" }}
+                            exit={{ opacity: 0, x: direction < 0 ? 30 : -30 }}
+                            transition={{ duration: 0.4 }}
                             className={styles.heroSliderGrid}
                         >
                             <div className={styles.heroInfo}>
+                                <span className={styles.heroPreTitle}>ПРОФЕССИОНАЛЬНО И БЕЗОПАСНО</span>
                                 <h1 className={styles.heroTitle}>{slide.title}</h1>
-                                <div className={styles.heroQuoteBlock}>
-                                    <p className={styles.heroQuoteDescr}>«{slide.quote}»</p>
-                                    <span className={styles.heroQuoteName}>- {slide.master}</span>
-                                </div>
-                                <div className={styles.heroQuoteFooter}>
-                                    <button className={styles.heroQuoteFooterBtn}>Рассчитать стоимость</button>
-                                    <p className={styles.heroQuoteFooterDescr}>
-                                        от <span className={styles.heroQuoteFooterPrice}>{slide.price} ₸</span>
-                                    </p>
+                                
+                                <p className={styles.heroDescription}>
+                                    Избавим ваш дом, офис или предприятие от насекомых, грибка, плесени и бактерий. 
+                                    Гарантируем безопасность для людей и животных.
+                                    {/* не придумал, что написать */}
+                                </p>
+
+                                <div className={styles.heroActions}>
+                                    <button className={styles.btnPrimary}>Рассчитать стоимость</button>
+                                    <button className={styles.btnSecondary}>Наши услуги</button>
                                 </div>
                             </div>
 
                             <div className={styles.heroVisual}>
                                 <div className={styles.heroImage}>
-                                    {slide.image ? (
-                                        <Image src={slide.image} priority alt={slide.master} width={500} height={300} />
-                                    ) : (
-                                        <div className={styles.skeleton}>
-                                            <span>Фото мастера {slide.master}</span>
-                                        </div>
-                                    )}
+                                    <Image 
+                                        src={slide.image} 
+                                        alt={slide.master} 
+                                        fill 
+                                        priority 
+                                        className={styles.masterImg} 
+                                    />
+                                    <div className={styles.heroNavigation}>
+                                        <ButtonSliderNav onPrev={() => paginate(-1)} onNext={() => paginate(1)} />
+                                    </div>
                                 </div>
                             </div>
                         </motion.div>
                     </AnimatePresence>
-
-                    <div className={styles.heroNavigationWrapp}>
-                        <ButtonSliderNav onPrev={() => paginate(-1)} onNext={() => paginate(1)} />
-                    </div>
                 </div>
             </div>
         </section>

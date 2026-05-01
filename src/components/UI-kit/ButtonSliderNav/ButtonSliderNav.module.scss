@@ -2,32 +2,26 @@
 
 .buttonSliderContainer {
   display: flex;
-  gap: 12px;
-  position: relative;
-  right: 175%;
+  gap: 8px;
 }
 
 .buttonSlider {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  border: 1px solid $gray-200;
-  background: $white;
-  color: $text-main;
+  width: 54px;
+  height: 54px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: $transition;
+  border-radius: 50%;
+  background: white;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+  color: $brand-blue;
 
   &:hover {
-    background: $primary-green;
-    color: $white;
-    border-color: $primary-green;
-    transform: scale(1.05);
-  }
-
-  &:active {
-    transform: scale(0.95);
+    transform: scale(1.1);
+    background: $brand-blue;
+    color: white;
   }
 }

@@ -1,0 +1,195 @@
+@import "../../styles/variables";
+
+.about {
+  padding: 80px 0;
+  background-color: $white;
+
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 80px;
+  align-items: center;
+
+  @include laptop {
+    gap: 40px;
+  }
+
+  @include tablet {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}
+
+.content {
+  .badge {
+    color: $brand-blue;
+    text-transform: uppercase;
+    font-weight: 800;
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    display: inline-block;
+    margin-bottom: 15px;
+    
+    // Эффект сверкания (как в Hero)
+    background: linear-gradient(to right, $brand-blue 0%, #66a3ff 50%, $brand-blue 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 5s linear infinite;
+  }
+
+  .title {
+    font-size: 3.2rem;
+    font-weight: 800;
+    color: #1a2b4b;
+    margin: 0 0 25px 0;
+    line-height: 1.1;
+
+    span {
+      color: $brand-blue;
+    }
+
+    @include tablet {
+      font-size: 2.5rem;
+    }
+  }
+
+  .description {
+    font-size: 1.15rem;
+    color: $text-muted;
+    line-height: 1.8;
+    margin-bottom: 40px;
+    max-width: 600px;
+
+    @include tablet {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
+
+.stats {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding: 30px;
+  background-color: $bg-light;
+  border-radius: 20px;
+  display: inline-flex;
+
+  @include tablet {
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+
+  .statItem {
+    text-align: left;
+  }
+
+  .statNum {
+    display: block;
+    font-size: 2.2rem;
+    font-weight: 850;
+    color: #1a2b4b;
+    line-height: 1;
+    margin-bottom: 5px;
+  }
+
+  .statLabel {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: $text-muted;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .statDivider {
+    width: 1px;
+    height: 50px;
+    background-color: rgba($brand-blue, 0.1);
+  }
+}
+
+.features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.featureCard {
+  background-color: $white;
+  padding: 40px;
+  border-radius: 30px;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  border: 1px solid $gray-100;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 4px;
+    background: $brand-blue;
+    opacity: 0;
+    transition: 0.3s;
+  }
+
+  &:hover {
+    box-shadow: 0 30px 60px rgba(0, 102, 255, 0.08);
+    border-color: rgba($brand-blue, 0.2);
+    transform: translateY(-8px);
+
+    &::before {
+      opacity: 1;
+    }
+
+    .iconBox {
+      background-color: $brand-blue;
+      color: $white;
+      transform: scale(1.1) rotate(5deg);
+    }
+  }
+
+  .iconBox {
+    width: 64px;
+    height: 64px;
+    background-color: $brand-blue-light;
+    color: $brand-blue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 18px;
+    margin-bottom: 25px;
+    transition: all 0.3s ease;
+    
+    svg {
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  .featureTitle {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #1a2b4b;
+    margin-bottom: 12px;
+  }
+
+  .featureDescr {
+    font-size: 1rem;
+    color: $text-muted;
+    line-height: 1.6;
+  }
+}
+
+@keyframes shine {
+  0% { background-position: 100% center; }
+  20% { background-position: -100% center; }
+  100% { background-position: -100% center; }
+}

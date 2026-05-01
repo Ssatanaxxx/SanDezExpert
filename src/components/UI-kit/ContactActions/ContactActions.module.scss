@@ -1,31 +1,34 @@
 @import "../../../styles/variables";
 
+$brand-blue: #0066ff;
+$brand-blue-light: rgba(0, 102, 255, 0.1);
+
 .header__contactActions {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 20px;
   position: relative;
 }
 
-.header__whatsapp {
+.header__whatsapp,
+.header__phone {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 42px;
+  position: relative;
   height: 42px;
-  background-color: $light-green;
-  color: $primary-green;
+  color: white;
   border-radius: 50%;
-  transition: $transition;
+  transition: all 0.3s ease;
 
   &:hover {
-    background-color: $primary-green;
-    color: $white;
-    transform: scale(1.1);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
 
-    & + .tooltip {
+    & .tooltip {
       opacity: 1;
       visibility: visible;
+      transform: translateY(0);
     }
   }
 }
@@ -33,50 +36,59 @@
 .header__phone {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   font-weight: 700;
-  color: $text-main;
-  font-size: 1rem;
-  padding: 8px 16px;
-  border-radius: $border-radius-sm;
-  transition: $transition;
+  color: #1a1a1a;
+  font-size: 1.05rem;
+  padding: 10px 18px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
 
   .phoneIcon {
-    color: $primary-green;
+    color: $brand-blue;
+    transition: transform 0.3s ease;
   }
 
   &:hover {
-    background-color: $gray-100;
+    background-color: $brand-blue-light;
+    color: $brand-blue;
+
+    .phoneIcon {
+      transform: rotate(15deg) scale(1.1);
+    }
   }
 
   @include mobile {
     font-size: 0;
     padding: 10px;
+    background-color: $brand-blue-light;
   }
 }
 
 .tooltip {
   position: absolute;
-  top: calc(100% + 10px);
+  top: calc(100% + 12px);
   right: 0;
-  background: $text-main;
-  color: $white;
-  padding: 6px 12px;
-  font-size: 0.75rem;
-  border-radius: 4px;
+  background: #1a1a1a;
+  color: white;
+  padding: 8px 14px;
+  font-size: 0.8rem;
+  border-radius: 8px;
   white-space: nowrap;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.2s ease;
+  transition: all 0.3s ease;
   pointer-events: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 
   &::before {
     content: "";
     position: absolute;
-    top: -4px;
+    top: -5px;
     right: 15px;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-bottom: 5px solid $text-main;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 6px solid #1a1a1a;
   }
 }

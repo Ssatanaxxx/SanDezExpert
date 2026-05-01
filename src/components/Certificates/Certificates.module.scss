@@ -1,0 +1,143 @@
+@import "../../styles/variables";
+
+$brand-blue: #0066ff;
+$brand-dark: #1a2b4b;
+
+.section {
+  padding: 120px 0;
+  background-color: $white;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 60px;
+
+  .badge {
+    display: inline-block;
+    padding: 6px 16px;
+    background: rgba($brand-blue, 0.08);
+    color: $brand-blue;
+    border-radius: 100px;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    margin-bottom: 15px;
+  }
+
+  .title {
+    font-size: 2.8rem;
+    font-weight: 850;
+    color: $brand-dark;
+    margin-bottom: 20px;
+  }
+
+  .subtitle {
+    max-width: 600px;
+    margin: 0 auto;
+    color: #4a5568;
+    line-height: 1.6;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+
+  @include laptop {
+    gap: 20px;
+  }
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  cursor: pointer;
+
+  &:hover {
+    .imageWrapper {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba($brand-dark, 0.12);
+
+      .overlay {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.imageWrapper {
+  position: relative;
+  aspect-ratio: 3/4;
+  background: #f1f4f8;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  transition: all 0.4s ease;
+  border: 1px solid rgba($brand-dark, 0.05);
+
+  .image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba($brand-blue, 0.85);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    opacity: 0;
+    transition: 0.3s ease;
+    color: white;
+    font-weight: 700;
+  }
+}
+
+.info {
+  text-align: center;
+
+  .certTitle {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: $brand-dark;
+    margin-bottom: 5px;
+  }
+
+  .certDesc {
+    font-size: 0.95rem;
+    color: #718096;
+  }
+}
+
+.trustFooter {
+  margin-top: 80px;
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  padding-top: 40px;
+  border-top: 1px solid #f1f4f8;
+
+  @include mobile {
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .trustItem {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 700;
+    color: $brand-dark;
+
+    .icon {
+      color: $brand-blue;
+    }
+  }
+}

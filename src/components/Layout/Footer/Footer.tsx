@@ -1,61 +1,61 @@
-import Link from 'next/link';
-import { Logotype } from "@/components/UI-kit/Logotype/Logotype";
-import styles from './Footer.module.scss';
-import { MapPin, Phone, Mail, Send } from "lucide-react" // Instagram
-import { Navigation } from "@/components/UI-kit/Navigation/Navigation";
+import { Logotype } from "../../UI-kit/Logotype/Logotype";
+import { Navigation } from "../../UI-kit/Navigation/Navigation";
+import { Phone, Mail, MapPin, MessageCircle } from "lucide-react";
+import styles from "./Footer.module.scss";
 
 export const Footer = () => {
     const currentYear = new Date().getFullYear();
 
     return (
-        <div className="container">
-            <div className={styles.grid}>
+        <footer className={styles.footer}>
+            <div className="container">
+                <div className={styles.inner}>
+                    {/* Блок 1: Лого и описание */}
+                    <div className={styles.brand}>
+                        <Logotype />
+                        <p className={styles.brandText}>
+                            Профессиональная дезинсекция в Астане.
+                            Используем передовые технологии для защиты вашего дома и бизнеса.
+                        </p>
+                        <div className={styles.socials}>
+                            {/* <a href="#" aria-label="Instagram"><Instagram size={20} /></a> */}
+                            <a href="#" aria-label="WhatsApp"><MessageCircle size={20} /></a>
+                        </div>
+                    </div>
 
-                <div className={styles.brand}>
-                    <Logotype />
-                    <p className={styles.description}>
-                        Профессиональная санитарная служба по всему РК.
-                        Уничтожаем вредителей с гарантией результата.
-                        Безопасно для семьи и бизнеса.
-                    </p>
+                    {/* Блок 2: Навигация */}
+                    <div className={styles.nav}>
+                        <h4 className={styles.title}>Навигация</h4>
+                        <ul>
+                            <Navigation />
+                        </ul>
+                    </div>
+
+                    {/* Блок 3: Контакты */}
+                    <div className={styles.contacts}>
+                        <h4 className={styles.title}>Контакты</h4>
+                        <div className={styles.contactItem}>
+                            <Phone size={18} className={styles.icon} />
+                            <a href="tel:+77471441031">+7 747 144 1031</a>
+                        </div>
+                        <div className={styles.contactItem}>
+                            <Mail size={18} className={styles.icon} />
+                            <a href="mailto:info@sandezexpert.kz">info@sandezexpert.kz</a>
+                        </div>
+                        <div className={styles.contactItem}>
+                            <MapPin size={18} className={styles.icon} />
+                            <span>г. Астана, ул. Профессиональная, 10</span>
+                        </div>
+                    </div>
                 </div>
 
-                <ul className={styles.nav}>
-                    <Navigation />
-                </ul>
-
-                <div className={styles.contacts}>
-                    <h4>Свяжитесь с нами</h4>
-                    <div className={styles.item}>
-                        <MapPin size={18} />
-                        <span>г. Астана, пр. Мангилик Ел, 17</span>
-                    </div>
-                    <div className={styles.item}>
-                        <Phone size={18} />
-                        <a href="tel:+77471441031">+7 (747) 144-10-31</a>
-                    </div>
-                    <div className={styles.item}>
-                        <Mail size={18} />
-                        <span>dinaro_84@mail.ru</span>
+                <div className={styles.bottom}>
+                    <p>© {currentYear} SANDEZEXPERT. Все права защищены.</p>
+                    <div className={styles.legal}>
+                        <a href="/privacy">Политика конфиденциальности</a>
                     </div>
                 </div>
-
-                <div className={styles.social}>
-                    <h4>Мы в соцсетях</h4>
-                    <div className={styles.icons}>
-                        <a href="#" className={styles.icon} aria-label="Instagram"></a>  {/* <Instagram />  */}
-                        <a href="#" className={styles.icon} aria-label="Telegram"><Send /></a>
-                        <a href="#" className={styles.icon} aria-label="TikTok"><Send /></a>
-                        <span className={styles.tooltip}>Работаем круглосуточно</span>
-                    </div>
-                </div>
-
             </div>
-
-            <div className={styles.bottom}>
-                <span>© {currentYear} SANDEZEXPERT. Все права защищены.</span>
-                <Link href="/privacy">Политика конфиденциальности</Link>
-            </div>
-        </div>
+        </footer>
     );
 };
