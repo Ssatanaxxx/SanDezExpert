@@ -199,4 +199,36 @@ $accent-blue: #0066ff;
       }
     }
   }
+
+  .socials {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+
+    a {
+      color: #516383; // Спокойный цвет по умолчанию
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: #f8fafc;
+      border-radius: 12px;
+
+      &:hover {
+        color: #0066ff;
+        background: #f0f4ff;
+        transform: translateY(-3px);
+      }
+    }
+  }
+
+  .navList {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    list-style: none;
+    padding: 0;
+  }
 }

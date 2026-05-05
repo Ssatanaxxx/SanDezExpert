@@ -7,17 +7,20 @@ import { clsx } from "clsx";
 import Link from "next/link";
 
 export const Services = () => {
-    const [activeId, setActiveId] = useState<string | null>(servicesData[0].id);
+    const [activeId, setActiveId] = useState<string | null>(null);
 
     return (
         <section className={styles.services} id="services">
-            <div className="container">
+            <div className={styles.servicesContainer}>
                 <div className={styles.top}>
                     <span className={styles.badge}>Наши услуги</span>
                     <h2 className={styles.title}>Комплексные решения для вашей безопасности</h2>
                 </div>
 
-                <div className={styles.flexGrid}>
+                <div
+                    className={styles.flexGrid}
+                    onMouseLeave={() => setActiveId(null)}
+                >
                     {servicesData.map((service) => {
                         const isActive = activeId === service.id;
 
@@ -36,7 +39,7 @@ export const Services = () => {
                             >
                                 <div className={styles.cardContent}>
                                     <motion.div layout className={styles.iconWrapper}>
-                                        <service.icon size={isActive ? 32 : 28} strokeWidth={1.5} className={styles.icon} />
+                                        <service.icon size={28} strokeWidth={isActive ? 2 : 1.5} />
                                     </motion.div>
 
                                     <div className={styles.cardText}>
@@ -47,30 +50,25 @@ export const Services = () => {
                                         <AnimatePresence>
                                             {isActive && (
                                                 <motion.div
-                                                    initial={{ opacity: 0, height: 0, y: 10 }}
-                                                    animate={{ opacity: 1, height: "auto", y: 0 }}
-                                                    exit={{ opacity: 0, height: 0, y: 10 }}
-                                                    transition={{ duration: 0.3, delay: 0.1 }}
+                                                    initial={{ opacity: 0, height: 0 }}
+                                                    animate={{ opacity: 1, height: "auto" }}
+                                                    exit={{ opacity: 0, height: 0 }}
+                                                    transition={{ duration: 0.3 }}
+                                                    style={{ overflow: 'hidden' }}
                                                 >
                                                     <p className={styles.fullDescription}>
                                                         {service.description}
                                                     </p>
 
                                                     <div className={styles.cardFooter}>
-                                                        <span className={styles.price}>от {service.price.toLocaleString()} ₸</span>
-                                                        <Link className={styles.orderBtn} href={"#quiz"}>Заказать услугу</Link>
+                                                        <span className={styles.price}>{service.price.toLocaleString('ru-RU')} ₸</span>
+                                                        <Link className={styles.orderBtn} href={"#quiz"}>Заказать</Link>
                                                     </div>
                                                 </motion.div>
                                             )}
                                         </AnimatePresence>
                                     </div>
                                 </div>
-
-                                <motion.div 
-                                    layout
-                                    className={styles.bottomLine} 
-                                    animate={{ width: isActive ? 60 : 35 }}
-                                />
                             </motion.div>
                         );
                     })}

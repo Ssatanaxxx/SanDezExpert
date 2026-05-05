@@ -1,7 +1,7 @@
-import { ShieldCheck, Clock, Award, Leaf } from "lucide-react";
+import { ShieldCheck, Clock, Award, Leaf, LucideIcon } from "lucide-react";
 
 export interface aboutFeaturesType {
-  icon: any;
+  icon: LucideIcon;
   id: number;
   title: string;
   descr: string;

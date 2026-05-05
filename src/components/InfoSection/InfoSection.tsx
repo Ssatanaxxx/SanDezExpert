@@ -16,7 +16,7 @@ export const InfoSection = () => {
                 <div className={styles.banner}>
 
                     <div className={styles.content}>
-                        <h2>Работаем по всем районам города и области</h2>
+                        <h3>Работаем по всем районам города и области</h3>
                         <div className={styles.description}>
                             <p>Выезжаем в день обращения.</p>
                             <p>Анонимно и конфиденциально.</p>

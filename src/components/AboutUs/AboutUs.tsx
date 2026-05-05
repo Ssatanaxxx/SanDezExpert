@@ -27,7 +27,6 @@ export const AboutUs = () => {
                         </div>
                     </div>
 
-                    {/* Правая часть: Сетка преимуществ */}
                     <div className={styles.features}>
                         {aboutFeatures.map((item) => (
                             <div key={item.id} className={styles.featureCard}>

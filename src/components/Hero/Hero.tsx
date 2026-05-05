@@ -26,13 +26,6 @@ export const Hero = () => {
         return () => clearInterval(slideShow);
     }, [paginate, isPaused]);
 
-    // const handleScrollToQuiz = () => { - скорее всего переизбыточно
-    //     const scrollToQuiz = document.querySelector(".quiz")
-    //     if (scrollToQuiz) {
-    //         scrollToQuiz.scrollIntoView({behavior: 'smooth'});
-    //     }
-    // }
-
     const slide = heroAnimation[activeIndex];
 
     return (

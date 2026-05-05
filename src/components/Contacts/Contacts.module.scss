@@ -1,0 +1,165 @@
+@import "@/styles/variables";
+
+$brand-blue: #0066ff;
+
+.contacts {
+  padding: 100px 0;
+  background-color: $white;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 40px;
+
+  @include tablet {
+    padding: 0 20px;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 80px;
+  align-items: start;
+
+  @include laptop {
+    gap: 40px;
+  }
+  @include tablet {
+    grid-template-columns: 1fr;
+  }
+}
+
+.info {
+  .badge {
+    color: $brand-blue;
+    font-weight: 800;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+  }
+
+  h2 {
+    font-size: 2.8rem;
+    color: #1a2b4b;
+    font-weight: 850;
+    margin: 15px 0 30px;
+    line-height: 1.1;
+  }
+}
+
+.contactItems {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.item {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+
+  .iconBox {
+    width: 54px;
+    height: 54px;
+    background: #f0f4ff;
+    color: $brand-blue;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .text {
+    h4 {
+      font-size: 1.1rem;
+      color: #1a2b4b;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+    p,
+    a {
+      color: #516383;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    a:hover {
+      color: $brand-blue;
+    }
+  }
+}
+
+.formCard {
+  background: $white;
+  padding: 50px;
+  border-radius: 32px;
+  border: 1px solid rgba($brand-blue, 0.08);
+  box-shadow: 0 30px 60px rgba(#1a2b4b, 0.05);
+
+  @include tablet {
+    padding: 30px 20px;
+  }
+
+  h3 {
+    font-size: 1.8rem;
+    color: #1a2b4b;
+    font-weight: 800;
+    margin-bottom: 10px;
+  }
+
+  .subtitle {
+    color: #516383;
+    margin-bottom: 35px;
+  }
+}
+
+.formGroup {
+  margin-bottom: 20px;
+
+  input,
+  textarea {
+    width: 100%;
+    padding: 16px 20px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    font-size: 1rem;
+    color: #1a2b4b;
+    transition: 0.3s;
+    outline: none;
+
+    &:focus {
+      border-color: $brand-blue;
+      background: $white;
+      box-shadow: 0 0 0 4px rgba($brand-blue, 0.05);
+    }
+  }
+
+  textarea {
+    min-height: 120px;
+    resize: none;
+  }
+}
+
+.submitBtn {
+  width: 100%;
+  background: $brand-blue;
+  color: $white;
+  padding: 18px;
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+
+  &:hover {
+    background: darken($brand-blue, 5%);
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba($brand-blue, 0.2);
+  }
+}

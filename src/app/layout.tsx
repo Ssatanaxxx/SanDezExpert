@@ -8,13 +8,21 @@ const inter = Inter({ subsets: ["cyrillic", "latin"] });
 export const metadata: Metadata = {
   title: "SANDEZEXPERT — Дезинсекция в Астане | Уничтожение насекомых, запахов и плесени",
   description: "Избавим от насекомых, неприятных запахов и плесени за 1 визит с гарантией 2 года. Безопасные препараты. Работаем в Астане 24/7. Бесплатный осмотр!",
+  openGraph: {
+    title: 'SANDEZEXPERT — Чистота и безопасность вашего дома',
+    description: 'Профессиональная дезинсекция в Астане с гарантией результата.',
+    url: 'https://sandezexpert.kz',
+    siteName: 'SANDEZEXPERT',
+    locale: 'ru_KZ',
+    type: 'website',
+  },
   icons: {
     icon: [
-      {url: '/favicon/favicon.ico'},
-      {url: '/favicon/faviconIco.svg', type: 'image/svg+xml'},
+      { url: '/favicon/favicon.ico' },
+      { url: '/favicon/faviconIco.svg', type: 'image/svg+xml' },
     ],
     apple: [
-      {url: '/favicon/apple-favicon.png'},
+      { url: '/favicon/apple-favicon.png' },
     ],
   }
 };
