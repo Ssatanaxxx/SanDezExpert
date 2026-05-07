@@ -24,6 +24,10 @@ export const Footer = () => {
                             Профессиональная дезинсекция в Астане.
                             Используем передовые технологии для защиты вашего дома и бизнеса.
                         </p>
+                        <p className={styles.brandText}>
+                            ИП Курмангалиева Динара Маратовна
+                            ИНН 841016450631
+                        </p>
 
                         <div className={styles.socials}>
                             <a href="https://instagram.com/ваш_профиль" target="_blank" rel="noopener noreferrer" aria-label="Instagram">

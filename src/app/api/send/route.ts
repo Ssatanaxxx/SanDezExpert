@@ -21,7 +21,7 @@ export async function POST(req: Request) {
       subject: `Новая заявка: ${name} SANDEZEXPERT`,
       html: `
         <div style="font-family: sans-serif; padding: 20px; border: 1px solid #eee;">
-          <h2 style="color: #0066FF;">Новая заявка с сайта</h2>
+          <h2 style="color: #0066FF;">Новая заявка с сайта SANDEZEXPERT.kz</h2>
           <p><strong>Имя:</strong> ${name}</p>
           <p><strong>Телефон:</strong> ${phone}</p>
           <p><strong>Сообщение:</strong> ${message}</p>

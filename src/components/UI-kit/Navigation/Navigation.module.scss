@@ -1,6 +1,19 @@
 @import "../../../styles/variables";
 
+.nav {
+  @include tablet {
+    display: none;
+  }
 
+  ul {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+}
 
 .links {
   font-size: 0.95rem;
@@ -40,3 +53,4 @@
     }
   }
 }
+

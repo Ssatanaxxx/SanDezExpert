@@ -5,17 +5,34 @@
   align-items: center;
   position: relative;
   padding: 40px 0;
+  margin-top: 40px;
   min-height: 700px;
   background-color: $bg-light;
   overflow: hidden;
+
+  @include tablet {
+    padding: 40px 0 80px;
+    margin-top: 100px;
+    min-height: auto;
+  }
 }
 
 .backgroundImage {
+  // object-fit: contain;
+  // object-position: center bottom;
+  // z-index: 0;
+  // pointer-events: none;
+  // opacity: 0.6; - ниже временный вариант с учетом адаптива
+
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
   object-position: center bottom;
   z-index: 0;
   pointer-events: none;
-  opacity: 0.6;
+  opacity: 0.5;
 }
 
 .heroContainer {
@@ -31,14 +48,17 @@
   gap: 60px;
   align-items: center;
 
+  @include laptop {
+    gap: 30px;
+  }
+
   @include tablet {
     grid-template-columns: 1fr;
-    gap: 40px;
     text-align: center;
+    gap: 40px;
   }
 }
 
-// ЛЕВАЯ ЧАСТЬ
 .heroInfo {
   display: flex;
   flex-direction: column;
@@ -166,13 +186,16 @@
 
   border-radius: 40px;
   overflow: hidden;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
   border: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: #001a4d;
 
   img {
     object-fit: cover;
     object-position: top center;
     transition: transform 0.5s ease;
+    width: 100%;
+    height: 100%;
   }
 
   &:hover img {
@@ -184,37 +207,13 @@
   }
 
   @include tablet {
-    height: 450px;
-    max-width: 400px;
+    height: 480px;
+    max-width: 100%;
   }
 
   @include mobile {
     height: 380px;
     border-radius: 24px;
-  }
-}
-
-.heroImage {
-  width: 100%;
-  max-width: 480px;
-  height: 580px;
-  position: relative;
-
-  border-radius: 40px;
-  overflow: hidden;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
-  background-color: #001a4d;
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
-  }
-
-  @include tablet {
-    height: 480px;
-    max-width: 100%;
   }
 }
 
@@ -257,7 +256,7 @@
 }
 
 .heroPreTitle {
-  color: #0066FF;
+  color: #0066ff;
   font-weight: 700;
   font-size: 1.9rem;
   font-weight: 900;
@@ -266,19 +265,22 @@
   display: inline-block;
 
   background: linear-gradient(
-    to right, 
-    #0066FF 0%, 
-    #0066FF 40%, 
+    to right,
+    #0066ff 0%,
+    #0066ff 40%,
     #ffffff 50%,
-    #0066FF 60%, 
-    #0066FF 100%
+    #0066ff 60%,
+    #0066ff 100%
   );
   background-size: 200% auto;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  
   animation: shine 8s linear infinite;
+
+  @include tablet {
+    font-size: 1.4rem;
+  }
 }
 
 @keyframes shine {
@@ -299,6 +301,16 @@
   color: #1a2b4b;
   line-height: 1.1;
   max-width: 600px;
+
+  @include laptop {
+    font-size: 3rem;
+  }
+  @include tablet {
+    font-size: 2.5rem;
+  }
+  @include mobile {
+    font-size: 2.2rem;
+  }
 }
 
 .heroDescription {
@@ -315,6 +327,7 @@
 
   @include mobile {
     flex-direction: column;
+    width: 100%;
   }
 }
 
@@ -324,12 +337,15 @@
   padding: 18px 32px;
   border-radius: 12px;
   font-weight: 700;
+  font-size: 1.1rem;
   border: none;
   cursor: pointer;
   transition: 0.3s;
+
   &:hover {
-    background: $brand-blue-hover;
+    background-color: darken($brand-blue, 10%);
     transform: translateY(-2px);
+    box-shadow: 0 15px 25px rgba($brand-blue, 0.3);
   }
 }
 
