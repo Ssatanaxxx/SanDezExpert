@@ -1,0 +1,28 @@
+@import "../../styles/variables";
+
+.marquee {
+  background-color: #0066ff;
+  color: $white;
+  padding: 12px 0;
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+  z-index: 5; 
+  font-weight: 850; 
+  text-transform: uppercase;
+  font-size: 0.95rem; 
+  letter-spacing: 0.05em;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15); 
+}
+
+.track {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  width: fit-content; 
+
+  .sallery {
+    display: inline-block;
+    flex-shrink: 0;
+  }
+}

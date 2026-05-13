@@ -5,7 +5,8 @@ $brand-dark: #1a2b4b;
 
 .section {
   padding: clamp(60px, 10vh, 120px) 0;
-  background-color: $white;
+  position: relative;
+  overflow: hidden;
 }
 
 .header {
@@ -41,27 +42,16 @@ $brand-dark: #1a2b4b;
   }
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
-
-  @media (max-width: 1010px) {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
-  }
-
-  @media (max-width: 720px) {
-    grid-template-columns: 1fr;
-    max-width: 450px;
-    margin: 0 auto;
-    gap: 40px;
-  }
+// --- СТИЛИ СЛАЙДЕРА ---
+.sliderContainer {
+  position: relative;
+  margin-top: 40px;
 }
 
 .card {
   cursor: pointer;
   outline: none;
+  padding-bottom: 10px; // чтобы тень не обрезалась
 
   &:hover {
     .imageWrapper {
@@ -72,7 +62,7 @@ $brand-dark: #1a2b4b;
         opacity: 1;
       }
     }
-    
+
     .certTitle {
       color: $brand-blue;
     }
@@ -93,7 +83,6 @@ $brand-dark: #1a2b4b;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.6s ease;
   }
 
   .overlay {
@@ -111,21 +100,9 @@ $brand-dark: #1a2b4b;
     padding: 20px;
     text-align: center;
 
-    svg {
-      width: 32px;
-      height: 32px;
-      margin-bottom: 5px;
-    }
-
     span {
       font-weight: 700;
       font-size: 1rem;
-    }
-  }
-  
-  @media (max-width: 1010px) {
-    .overlay {
-      background: rgba($brand-blue, 0.7);
     }
   }
 }
@@ -148,6 +125,56 @@ $brand-dark: #1a2b4b;
   }
 }
 
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  width: 100%;
+  margin: 50px 0 auto;
+}
+
+.navBtn {
+  width: 50px;
+  height: 50px;
+  min-width: 50px;
+  min-height: 50px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 2px solid rgba($brand-blue, 0.15);
+  background: white;
+  color: $brand-dark;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover:not(:disabled) {
+    background: $brand-blue;
+    color: white;
+    border-color: $brand-blue;
+    box-shadow: 0 8px 15px rgba($brand-blue, 0.2);
+  }
+
+  &:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    border-color: #e2e8f0;
+  }
+
+  svg {
+    display: block;
+    flex-shrink: 0;
+  }
+}
+
+.controlsContainer {
+  max-width: 230px;
+  margin: 0 auto;
+}
+
 .trustFooter {
   margin-top: clamp(50px, 8vw, 80px);
   display: flex;
@@ -158,11 +185,8 @@ $brand-dark: #1a2b4b;
 
   @media (max-width: 720px) {
     flex-direction: column;
-    gap: 25px;
-    align-items: flex-start;
-    max-width: fit-content;
-    margin-left: auto;
-    margin-right: auto;
+    align-items: center;
+    text-align: center;
   }
 
   .trustItem {
@@ -176,6 +200,75 @@ $brand-dark: #1a2b4b;
     .icon {
       color: $brand-blue;
       flex-shrink: 0;
+    }
+  }
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba($brand-dark, 0.95);
+  backdrop-filter: blur(8px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+
+  .modalContent {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    border-radius: 12px;
+    overflow: hidden;
+
+    img {
+      max-width: 100%;
+      max-height: 85vh;
+      object-fit: contain;
+    }
+  }
+
+  .closeModal {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+  }
+
+  .pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-width: 80px;
+
+    :global(.swiper-pagination-bullet) {
+      width: 8px;
+      height: 8px;
+      background: #cbd5e0;
+      opacity: 1;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+      margin: 0;
+    }
+
+    :global(.swiper-pagination-bullet-active) {
+      background-color: $brand-blue;
+      width: 24px;
+      border-radius: 4px;
     }
   }
 }
