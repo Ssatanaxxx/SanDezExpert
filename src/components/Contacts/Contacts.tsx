@@ -32,7 +32,7 @@ export const Contacts = () => {
                 setStatus(result?.error?.includes('минуту') ? 'rate-limit' : 'error');
             }
         } catch (error) {
-            setErrorMessage("Произошла техническая ошибка.");
+            setErrorMessage("Произошла техническая ошибка." + error);
             setStatus('error');
         }
     };
