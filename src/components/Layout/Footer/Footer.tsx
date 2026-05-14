@@ -30,13 +30,13 @@ export const Footer = () => {
                         </p>
 
                         <div className={styles.socials}>
-                            <a href="https://instagram.com/ваш_профиль" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                            <a href="https://www.instagram.com/dez_arsenal/p/CrJeTwvtLNa/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                                 <Camera size={22} />
                             </a>
                             <a href="https://wa.me/77471441031" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
                                 <MessageCircle size={22} />
                             </a>
-                            <a href="https://t.me/ваш_профиль" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+                            <a href="https://web.telegram.org/a/#8993208192" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
                                 <Send size={22} />
                             </a>
                             <a href="https://tiktok.com/@ваш_профиль" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
@@ -60,7 +60,7 @@ export const Footer = () => {
                         </div>
                         <div className={styles.contactItem}>
                             <Mail size={18} className={styles.icon} />
-                            <a href="mailto:info@sandezexpert.kz">info@sandezexpert.kz</a>
+                            <a href="mailto:sandezexpert@gmail.com">sandezexpert@gmail.com</a>
                         </div>
                         <div className={styles.contactItem}>
                             <MapPin size={18} className={styles.icon} />
@@ -72,7 +72,7 @@ export const Footer = () => {
                 <div className={styles.bottom}>
                     <p>© {currentYear} SANDEZEXPERT. Все права защищены.</p>
                     <div className={styles.legal}>
-                        <a href="/privacy">Политика конфиденциальности</a>
+                        <a href="/privacy" target="_blank" rel="noopener noreferrer" aria-label="Politic">Политика конфиденциальности</a>
                     </div>
                 </div>
             </div>
