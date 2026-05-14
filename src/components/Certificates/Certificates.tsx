@@ -125,7 +125,7 @@ export const Certificates = () => {
                             animate={{ scale: 1, opacity: 1 }}
                             className={styles.modalContent}
                             onClick={(e) => e.stopPropagation()}
-                            style={{ position: 'relative', width: '90vw', height: '85vh' }} // Нужно задать размер контейнеру
+                            style={{ position: 'relative', width: '90vw', height: '85vh' }}
                         >
                             <Image
                                 src={selectedImg}

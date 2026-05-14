@@ -20,25 +20,22 @@ const schema = z.object({
   serviceName: z.string().max(500, "Сообщение слишком длинное").optional(),
 });
 
-// 2. Настройка Redis и Лимитов
 const redis = new Redis({
   url: process.env.UPSTASH_REDIS_REST_URL!,
   token: process.env.UPSTASH_REDIS_REST_TOKEN!,
 });
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend(process.env.RESEND_API_KEY!);
 
 const ratelimit = new Ratelimit({
   redis: redis,
-  limiter: Ratelimit.slidingWindow(1, "60 s"), // 1 запрос в минуту с одного IP
+  limiter: Ratelimit.slidingWindow(1, "60 s"),
 });
 
 export async function handleOrder(formData: FormData) {
-  // --- ЗАЩИТА 1: Honeypot (Ловушка для ботов) ---
   const botTrap = formData.get("website_trap");
   if (botTrap) return { success: true };
 
-  // --- ЗАЩИТА 2: Rate Limit (Кулдаун) ---
   const ip = (await headers()).get("x-forwarded-for") ?? "127.0.0.1";
   const { success } = await ratelimit.limit(ip);
 
@@ -46,7 +43,6 @@ export async function handleOrder(formData: FormData) {
     return { error: "Заявка уже отправлена. Повторите через минуту." };
   }
 
-  // --- ЗАЩИТА 3: Валидация Zod ---
   const rawData = {
     userName: formData.get("userName"),
     userPhone: formData.get("userPhone"),
@@ -68,7 +64,6 @@ export async function handleOrder(formData: FormData) {
   const finalService = serviceName || "Не указана";
 
   try {
-    // --- ОТПРАВКА В TELEGRAM ---
     const telegramPromise = fetch(
       `https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage`,
       {
@@ -82,9 +77,8 @@ export async function handleOrder(formData: FormData) {
       }
     );
 
-    // --- ОТПРАВКА НА ПОЧТУ (через Resend) ---
     const emailPromise = resend.emails.send({
-      from: "SandezExpert <onboarding@resend.dev>", // Замени на свой домен после верификации
+      from: "SandezExpert <info@sandezexpert.kz>",
       to: ["sandezexpert@gmail.com"],
       subject: `Новая заявка: ${userName} | SANDEZEXPERT`,
       html: `
