@@ -1,4 +1,4 @@
-import { ShieldCheck, Clock, Zap, Leaf, Lock, ClipboardCheck } from "lucide-react";
+import {Zap, Leaf, Lock, ClipboardCheck } from "lucide-react";
 
 export const advantagesData = [
   {
